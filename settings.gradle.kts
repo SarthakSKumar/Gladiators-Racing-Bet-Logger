@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "read-bets"
+rootProject.name = "Gladiators Bet Reader"
 include(":app")
  
