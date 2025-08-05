@@ -122,7 +122,7 @@ fun RaceScreen(
         }
 
         if (!isRecording.value) {
-            Text("Select Group:", fontWeight = FontWeight.Medium)
+            Text("Select Group", fontWeight = FontWeight.Medium)
             groupNames.forEach { groupName ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -143,7 +143,7 @@ fun RaceScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Select Race Number:", fontWeight = FontWeight.Medium)
+            Text("Select Race Number", fontWeight = FontWeight.Medium)
             ExposedDropdownMenuBox(
                 expanded = expanded,
                 onExpandedChange = { expanded = !expanded }
@@ -193,7 +193,7 @@ fun RaceScreen(
                         .apply()
                 }
             }) {
-                Text("Start Race Bet")
+                Text("Start Bet Logging")
             }
         } else {
             Button(
@@ -222,7 +222,7 @@ fun MessageList(messages: List<MessageItem>) {
         .padding(vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text("S.No", fontWeight = FontWeight.Bold, modifier = Modifier.weight(0.1f))
+        Text("No", fontWeight = FontWeight.Bold, modifier = Modifier.weight(0.1f))
         Text("Sender", fontWeight = FontWeight.Bold, modifier = Modifier.weight(0.3f))
         Text("Message", fontWeight = FontWeight.Bold, modifier = Modifier.weight(0.4f))
         Text("Time", fontWeight = FontWeight.Bold, modifier = Modifier.weight(0.2f))

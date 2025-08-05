@@ -17,12 +17,22 @@ class NotificationListener : NotificationListenerService() {
         val processedMessages = LruCache<String, Boolean>(100)
         var messageCounter = 0
     }
+
     private val CLEAR_INTERVAL_MS = 5000L
     private var lastClearTime = System.currentTimeMillis()
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         val sender = sbn.notification.extras.getString("android.title") ?: return
-        val message = sbn.notification.extras.getCharSequence("android.text")?.toString() ?: return
+
+        val rawText = sbn.notification.extras.getCharSequence("android.text") ?: return
+        val message = rawText.toString().trim()
+
+        // ✅ Constraint 1: Ignore messages longer than 25 characters
+        if (message.length > 25) return
+
+        // ✅ Constraint 2: Only allow plain text (alphanumerics and basic punctuation)
+        val isTextOnly = message.matches(Regex("^[\\w\\s.,:;!?@#'\"()\\[\\]{}\\-+=*/\\\\]{1,25}$"))
+        if (!isTextOnly) return
 
         val messageId = "$sender::$message"
         if (processedMessages.get(messageId) != null) {
@@ -31,16 +41,13 @@ class NotificationListener : NotificationListenerService() {
         }
 
         val packageName = sbn.packageName
-
         if (packageName != "com.whatsapp") return
 
         Log.d("RawNotif", "Sender: $sender | Message: $message")
 
-        // Get group name and start time from prefs
         val prefs = getSharedPreferences("race_prefs", Context.MODE_PRIVATE)
         val activeGroup = prefs.getString("group_name", null)
         val startTime = prefs.getLong("start_time", -1L)
-
         if (activeGroup.isNullOrBlank() || startTime == -1L) return
 
         val isSummary = message.matches(Regex("^\\d+ new messages$"))
@@ -71,10 +78,11 @@ class NotificationListener : NotificationListenerService() {
             }
         }
     }
+
     private fun sendToGoogleScript(id: Int, sender: String, message: String, groupName: String, raceNumber: String) {
         Thread {
             try {
-                val url = URL("https://script.google.com/macros/s/AKfycbwm8Dffk5whDosDT4Vv6XzOGbHx3EwdQgD0cG63deoNkIvTwnc0trCbVAvMNbo75s7y/exec")
+                val url = URL("https://script.google.com/macros/s/AKfycbytzWDJ_IksnJcMLhB1RbW0XLEqjQssDsTdGDw7zi2KDp5mkFqKIKsOOtA59VvijpLBgA/exec")
 
                 val jsonBody = JSONObject()
                 jsonBody.put("id", id)
