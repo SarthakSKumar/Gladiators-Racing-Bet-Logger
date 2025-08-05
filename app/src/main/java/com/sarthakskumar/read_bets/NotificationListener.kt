@@ -82,7 +82,7 @@ class NotificationListener : NotificationListenerService() {
     private fun sendToGoogleScript(id: Int, sender: String, message: String, groupName: String, raceNumber: String) {
         Thread {
             try {
-                val url = URL("https://script.google.com/macros/s/AKfycbytzWDJ_IksnJcMLhB1RbW0XLEqjQssDsTdGDw7zi2KDp5mkFqKIKsOOtA59VvijpLBgA/exec")
+                val url = URL("https://script.google.com/macros/s/AKfycbxdKsBHffAJsrgSlpWQ9exqEqQ02M4_KCH_IvNiA0QD3khNTWROfeyBym-e2RNGcucV/exec")
 
                 val jsonBody = JSONObject()
                 jsonBody.put("id", id)
