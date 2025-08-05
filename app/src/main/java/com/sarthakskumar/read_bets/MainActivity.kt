@@ -205,7 +205,7 @@ fun RaceScreen(
                 colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.error),
                 modifier = Modifier.padding(bottom = 8.dp)
             ) {
-                Text("End Race")
+                Text("End Bet Logging")
             }
         }
 
