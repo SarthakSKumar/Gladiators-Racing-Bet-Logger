@@ -92,7 +92,7 @@ fun RaceScreen(
     initialStartTime: Long,
     prefs: SharedPreferences
 ) {
-    val groupNames = listOf("Gladiators Indian Racing 🏇", "Gladiators International Racing 🏇", "Horse Betting Group")
+    val groupNames = listOf("Gladiators Indian Racing 🏇", "Gladiators International Racing 🏇")
     val (selectedGroup, onGroupSelected) = remember { mutableStateOf(initialGroupName.ifBlank { groupNames[0] }) }
 
     val raceNumbers = (1..10).map { it.toString() }

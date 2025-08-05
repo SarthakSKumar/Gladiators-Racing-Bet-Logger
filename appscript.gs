@@ -9,9 +9,9 @@ function doPost(e) {
     const raceNumber = data.raceNumber;
 
     const indianRacingSpreadsheet =
-      "1chCqbk9iwEhGCEPdUiSa-U3_UIM97SLYmkBvMLIn32E";
+      "1VBCoHC4sFKo9-z-UFYBZyR5Ffb34mkOb_PANtgh5224";
     const internationalRacingSpreadsheet =
-      "PASTE_YOUR_SECOND_SPREADSHEET_ID_HERE";
+      "17SV8q-OUgKocFJ_Vi6VEoWaU-0kGarRJiOJz16jiC2o";
 
     let spreadsheetId;
     if (groupName === "Gladiators Indian Racing 🏇") {
