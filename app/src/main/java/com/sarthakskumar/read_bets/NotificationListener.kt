@@ -83,7 +83,7 @@ class NotificationListener : NotificationListenerService() {
         Thread {
             try {
                 val url = URL("https://script.google.com/macros/s/AKfycbxzjw624HOWTBVNlcOjyy20tYY4XnWL_90Nj09NijpbSxsPtbOzJjCdvCoDyib8WKza/exec")
-
+                https://script.google.com/macros/s/AKfycbxzjw624HOWTBVNlcOjyy20tYY4XnWL_90Nj09NijpbSxsPtbOzJjCdvCoDyib8WKza/exec
                 val jsonBody = JSONObject()
                 jsonBody.put("id", id)
                 jsonBody.put("sender", sender.substringAfter(": ").trim())
