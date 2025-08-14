@@ -123,7 +123,7 @@ Examples:
 - "9 each way 3k" → { "hNo": 9, "win": 3000, "place": 3000 }
 - "6w1200p300" → { "hNo": 6, "win": 1200, "place": 300 }
 - "2 win 200 place 500" → { "hNo": 2, "win": 200, "place": 500 }
-- "random garbage" → { "error": "Could not parse message" }
+- "random garbage" → { "error": "Could not   parse message" }
 
 If the message is unclear, invalid, or unparseable, then only return: { "error": "Could not parse message" }
 Respond only with valid JSON. Do not include explanations or any extra text.
@@ -211,7 +211,7 @@ Now extract from this message: "${message}"`;
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({
       status: "error",
-      message: error.message,
+      message: error.message, 
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
